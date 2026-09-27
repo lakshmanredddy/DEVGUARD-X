@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070a0f" />
+  <title>DEVGUARD-X — Developer Workflow Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">D</div><div><b>DEVGUARD</b><span>X</span><small>Workflow Intelligence</small></div></div>
+      <div class="workspace"><div class="repo-icon">⌘</div><div><strong id="repoName">payments-api</strong><small>main · synced</small></div><button class="icon-btn">⌄</button></div>
+      <nav>
+        <p class="nav-label">WORKSPACE</p>
+        <a class="nav-item active" data-view="overview"><i>◈</i> Overview</a>
+        <a class="nav-item" data-view="issues"><i>◇</i> Issues <em id="issueCount">2</em></a>
+        <a class="nav-item" data-view="runs"><i>◌</i> Workflow runs</a>
+        <a class="nav-item" data-view="agents"><i>✦</i> Agents</a>
+        <a class="nav-item" data-view="security"><i>◉</i> Security</a>
+        <a class="nav-item" data-view="release"><i>↗</i> Release readiness</a>
+        <p class="nav-label">PROJECT</p>
+        <a class="nav-item" data-view="activity"><i>≋</i> Activity</a>
+        <a class="nav-item" data-view="settings"><i>⚙</i> Settings</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="bob-card"><div class="bob-logo">IBM</div><strong>Bob 2.0</strong><small>Agent workspace connected</small><span class="connected"><b></b> Connected</span></div><div class="user"><div class="avatar">LR</div><div><strong>Developer</strong><small>Team Code Warriors</small></div><button class="icon-btn">•••</button></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div class="crumb"><span>Workspace</span><b>/</b><strong id="pageTitle">Overview</strong></div><div class="top-actions"><div class="status-pill"><span></span> API online</div><button class="ghost-btn" id="refreshBtn">↻ Refresh</button><button class="primary-btn" id="newIssueBtn">+ New issue</button></div></header>
+      <div id="toast" class="toast"></div>
+      <section id="view-overview" class="view active-view">
+        <div class="hero"><div><div class="eyebrow"><span class="live"></span> AUTONOMOUS DEVELOPER WORKFLOW</div><h1>Ship fixes with <span>confidence.</span></h1><p>DEVGUARD-X coordinates diagnosis, testing, security review and release readiness through an IBM Bob-powered agent workflow.</p></div><div class="hero-actions"><button class="primary-btn large" id="runDemoBtn">▶ Run workflow</button><button class="ghost-btn large" id="demoIssueBtn">View demo issue</button></div></div>
+        <div class="metrics" id="metrics"></div>
+        <div class="grid-2"><div class="panel workflow-panel"><div class="panel-head"><div><h2>Active workflow</h2><p id="runSubtitle">Select an issue to start an agentic run.</p></div><span class="badge neutral" id="runStatus">IDLE</span></div><div class="workflow-track" id="workflowTrack"></div><div class="run-footer"><div class="progress-wrap"><div class="progress-line"><span id="progressBar"></span></div><div class="progress-label"><span>Workflow progress</span><b id="progressText">0%</b></div></div><button class="text-btn" id="openRunBtn">Open run →</button></div></div>
+          <div class="panel issue-panel"><div class="panel-head"><div><h2>Priority issues</h2><p>Developer work waiting for automation.</p></div><button class="text-btn" data-view-link="issues">View all →</button></div><div id="issueList"></div></div></div>
+        <div class="grid-3"><div class="panel"><div class="panel-head"><div><h2>Agent fleet</h2><p>Specialized workers available to Bob.</p></div></div><div class="agent-mini-list" id="agentMini"></div></div><div class="panel"><div class="panel-head"><div><h2>Quality gate</h2><p>Latest validated run.</p></div></div><div id="qualityGate"></div></div><div class="panel"><div class="panel-head"><div><h2>Impact</h2><p>Automation vs manual effort.</p></div></div><div class="impact"><div><span>Manual</span><b>45m</b></div><div class="impact-arrow">→</div><div><span>DEVGUARD-X</span><b>6m</b></div></div><div class="saving"><strong>87%</strong><span>estimated time reduction</span></div></div></div>
+      </section>
+
+      <section id="view-issues" class="view"><div class="page-heading"><div><div class="eyebrow">WORK ITEMS</div><h1>Issues</h1><p>Create and route developer issues into the automated workflow.</p></div><button class="primary-btn" id="newIssueBtn2">+ New issue</button></div><div class="panel"><div id="issuesTable"></div></div></section>
+      <section id="view-runs" class="view"><div class="page-heading"><div><div class="eyebrow">AUTOMATION</div><h1>Workflow runs</h1><p>Every agentic execution is persisted for traceability.</p></div><button class="primary-btn" id="runAgainBtn">▶ Run selected</button></div><div class="panel"><div id="runsTable"></div></div></section>
+      <section id="view-agents" class="view"><div class="page-heading"><div><div class="eyebrow">AGENT FLEET</div><h1>Agents</h1><p>Specialized workers coordinate through the Bob workflow.</p></div></div><div class="agent-grid" id="agentGrid"></div></section>
+      <section id="view-security" class="view"><div class="page-heading"><div><div class="eyebrow">TRUST CENTER</div><h1>Security</h1><p>Latest security checks and findings from automated validation.</p></div></div><div class="panel"><div id="securityContent"></div></div></section>
+      <section id="view-release" class="view"><div class="page-heading"><div><div class="eyebrow">DELIVERY</div><h1>Release readiness</h1><p>Deployment gates, evidence and handoff status.</p></div></div><div class="release-layout" id="releaseContent"></div></section>
+      <section id="view-activity" class="view"><div class="page-heading"><div><div class="eyebrow">AUDIT TRAIL</div><h1>Activity</h1><p>Live system and agent events.</p></div></div><div class="panel"><div id="activityList"></div></div></section>
+      <section id="view-settings" class="view"><div class="page-heading"><div><div class="eyebrow">CONFIGURATION</div><h1>Settings</h1><p>Project and workflow configuration.</p></div><button class="primary-btn" id="saveSettings">Save changes</button></div><div class="settings-grid"><div class="panel form-panel"><label>Project name<input id="sProject"></label><label>Repository<input id="sRepo"></label><label>Default branch<input id="sBranch"></label><label>Bob mode<select id="sMode"><option>Agent</option><option>Plan</option><option>Ask</option></select></label><label class="switch-row"><span><strong>Auto-approve actions</strong><small>Keep disabled for safe demos.</small></span><input type="checkbox" id="sAuto"></label></div><div class="panel"><h2>IBM Bob integration</h2><p class="muted">DEVGUARD-X is designed to make IBM Bob IDE the core execution environment for the workflow. The dashboard persists run state and presents the evidence generated by your Bob session.</p><div class="integration"><span class="check">✓</span><div><strong>Bob IDE</strong><small>Core workflow engine</small></div><span class="badge success">Connected</span></div><div class="integration"><span class="check">✓</span><div><strong>Project rules</strong><small>.bob/rules/devguard-workflow.md</small></div><span class="badge success">Loaded</span></div><div class="integration"><span class="check">✓</span><div><strong>Agent skills</strong><small>.bob/skills/devguard-workflow</small></div><span class="badge success">Loaded</span></div></div></div></section>
+    </main>
+  </div>
+  <div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><div><div class="eyebrow">CREATE WORK ITEM</div><h2>New developer issue</h2></div><button class="icon-btn" id="closeModal">×</button></div><form id="issueForm"><label>Issue title<input name="title" required placeholder="e.g. API returns 500 on large uploads"></label><label>Description<textarea name="description" rows="4" placeholder="Describe the problem and expected behavior."></textarea></label><div class="form-row"><label>Severity<select name="severity"><option>High</option><option selected>Medium</option><option>Low</option></select></label><label>Repository<input name="repository" value="payments-api"></label></div><button class="primary-btn full" type="submit">Create issue & route to workspace</button></form></div></div>
+  <script src="/app.js"></script>
+</body>
+</html>

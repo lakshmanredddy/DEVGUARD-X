@@ -1,0 +1,5 @@
+{
+  "name":"devguard-x","version":"2.0.0","private":true,"type":"module",
+  "description":"DEVGUARD-X — full-stack IBM Bob 2.0 developer workflow platform",
+  "scripts":{"start":"node server.js","dev":"node --watch server.js"},"engines":{"node":">=20"}
+}

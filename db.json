@@ -1,0 +1,10 @@
+{
+  "issues": [
+    {"id":"ISS-1042","title":"PDF uploads over 10 MB return HTTP 500","description":"Users receive a server error when uploading larger PDF files.","severity":"High","status":"Open","repository":"payments-api","createdAt":"2026-09-26T10:20:00.000Z"},
+    {"id":"ISS-1038","title":"Retry worker duplicates webhook delivery","description":"A failed retry can enqueue the same webhook twice.","severity":"Medium","status":"Investigating","repository":"events-service","createdAt":"2026-09-25T15:42:00.000Z"}
+  ],
+  "runs": [],
+  "activity": [],
+  "findings": [],
+  "settings":{"project":"DEVGUARD-X","repository":"payments-api","branch":"main","bobMode":"Agent","autoApprove":false}
+}
